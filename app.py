@@ -42,6 +42,20 @@ def index():
     return render_template('index.html')
 
 
+# Route to display all wallet IDs
+@app.route('/wallets', methods=['GET'])
+def wallets():
+    conn = get_db_connection()
+    wallets = conn.execute('SELECT id FROM main').fetchall()
+    conn.close()
+    return render_template('wallets.html', wallets=wallets)
+
+# Route to analyze a specific wallet by ID
+@app.route('/analyze_wallet/<int:wallet_id>', methods=['GET'])
+def analyze_wallet(wallet_id):
+    return render_template('analyze_wallet.html', wallet_id=wallet_id)
+
+
 if __name__ == '__main__':
     create_table()
     app.run(debug=True)

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Wallets - Flask Bootstrap Template{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Wallets</h2>
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for wallet in wallets %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('analyze_wallet', wallet_id=wallet['id']) }}">{{ wallet['id'] }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
