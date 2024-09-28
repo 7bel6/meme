@@ -4,8 +4,29 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="mt-4">Analyze Wallet</h2>
-    <p>Analysis for Wallet ID: {{ wallet_id }}</p>
-    <!-- More details about the analysis will be added here -->
+    <h2 class="mt-4">Analyze Wallet (ID: {{ wallet_id }})</h2>
+    
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Coin</th>
+                <th scope="col">Total Buy Amount</th>
+                <th scope="col">Total Sell Amount</th>
+                <th scope="col">Net Profit/Loss</th>
+                <th scope="col">Profitability</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for coin, data in analysis.items() %}
+            <tr>
+                <td>{{ coin }}</td>
+                <td>{{ data.total_buy }}</td>
+                <td>{{ data.total_sell }}</td>
+                <td>{{ data.net }}</td>
+                <td>{{ data.profitability }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
