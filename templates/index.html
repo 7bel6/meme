@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Index - Flask Bootstrap Template{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Save HTML Content</h2>
+    <form method="POST" action="{{ url_for('index') }}">
+        <div class="form-group">
+            <label for="htmlContent">HTML Content</label>
+            <textarea class="form-control" id="htmlContent" name="htmlContent" rows="10" placeholder="Paste your HTML code here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+{% endblock %}
